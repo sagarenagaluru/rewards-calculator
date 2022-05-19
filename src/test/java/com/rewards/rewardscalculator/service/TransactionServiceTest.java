@@ -3,22 +3,15 @@ package com.rewards.rewardscalculator.service;
  *Author : Sagar Enagaluru
  */
 
-import com.rewards.rewardscalculator.dto.RewardsSummary;
 import com.rewards.rewardscalculator.entity.TransactionsEntity;
 import com.rewards.rewardscalculator.repository.TransactionRepository;
-import org.assertj.core.api.Assertions;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.mockito.internal.matchers.Equals;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -26,13 +19,13 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @SpringBootTest
-public class TransactionServiceTest {
+class TransactionServiceTest {
 
     @Autowired
-    TransactionsService transactionsService;
+    private TransactionsService transactionsService;
     @MockBean
-    TransactionRepository transactionRepository;
-    List<TransactionsEntity> transactionsEntityList;
+    private TransactionRepository transactionRepository;
+    private List<TransactionsEntity> transactionsEntityList;
 
     @BeforeEach
     public void setUp(){
@@ -51,8 +44,9 @@ public class TransactionServiceTest {
     }
 
     @Test
-    public void testRewardsSummaryWithCustomerId(){
+    public void testRewardsSummaryWithCustomerId() throws Exception{
         Mockito.when(transactionRepository.findAllByCustomerIdOrderByTransactionDateAsc(1)).thenReturn(transactionsEntityList);
         Assert.assertEquals(528, (transactionsService.calculatePointsForCustomer(1).getTotalRewardPoints().longValue()));
     }
+
 }

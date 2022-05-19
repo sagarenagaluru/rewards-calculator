@@ -27,7 +27,7 @@ public class RewardsController {
 
     @GetMapping(value = "/{id}/calculate")
     private ResponseEntity<RewardsSummary> calculateRewardPointsWithCustomerId(
-            @PathVariable("id") int customerId) {
+            @PathVariable("id") int customerId)  throws Exception{
         logger.info("Inside controller to calculate rewards with CustomerID :{}", customerId);
         return ResponseEntity.ok(transactionService.calculatePointsForCustomer(customerId));
     }

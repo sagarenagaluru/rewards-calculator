@@ -27,20 +27,15 @@ public class TransactionsService {
     @Autowired
     private TransactionRepository tnxRepository;
 
-    public RewardsSummary calculatePointsForCustomer(int customerId){
+    public RewardsSummary calculatePointsForCustomer(int customerId) throws Exception{
         RewardsSummary rewardsSummary;
-        try {
-            logger.debug("executing query for rewardsSummary with customerId");
-            List<TransactionsEntity> transactionsEntityList = tnxRepository.findAllByCustomerIdOrderByTransactionDateAsc(customerId);
-            if(null != transactionsEntityList && !transactionsEntityList.isEmpty())
-                rewardsSummary = prepareRewardsSummary(transactionsEntityList);
-            else {
-                logger.info("No rewardsSummary found with customerId {}", customerId);
-                throw new NoTransactionFoundException("No rewardsSummary found");
-            }
-        } catch (Exception e) {
-            logger.error("Exception while fetching transactions", e);
-            throw new HttpServerErrorException(HttpStatus.INTERNAL_SERVER_ERROR, "An error occurred while fetching Transaction Details");
+        logger.debug("executing query for rewardsSummary with customerId");
+        List<TransactionsEntity> transactionsEntityList = tnxRepository.findAllByCustomerIdOrderByTransactionDateAsc(customerId);
+        if(null != transactionsEntityList && !transactionsEntityList.isEmpty())
+            rewardsSummary = prepareRewardsSummary(transactionsEntityList);
+        else {
+            logger.info("No rewardsSummary found with customerId {}", customerId);
+            throw new NoTransactionFoundException("No rewardsSummary found");
         }
         return rewardsSummary;
     }
