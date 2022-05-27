@@ -13,8 +13,8 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
 import javax.validation.constraints.Positive;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor(staticName = "build")
@@ -31,7 +31,7 @@ public class TransactionRequest {
     @NotNull(message = "transactionDate cannot be null")
     private LocalDate transactionDate;
 
-    @Positive(message="totalAmount must be greater than 0")
+    @Positive(message = "totalAmount must be greater than 0")
     private Double totalAmount;
 
     @Positive(message = "customerId shouldn't be empty")

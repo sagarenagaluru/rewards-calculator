@@ -5,7 +5,6 @@ package com.rewards.rewardscalculator.repository;
 
 import com.rewards.rewardscalculator.entity.TransactionsEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;

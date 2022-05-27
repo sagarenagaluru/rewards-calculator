@@ -18,18 +18,18 @@ public class ExceptionsAdviceController {
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(NoTransactionFoundException.class)
-    public Map<String, String> transactionNotFound(NoTransactionFoundException tnxException){
+    public Map<String, String> transactionNotFound(NoTransactionFoundException tnxException) {
         Map<String, String> errorMap = new HashMap<>();
         errorMap.put("errorMessage", tnxException.getMessage());
         return errorMap;
     }
 
 
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Exception.class)
     public Map<String, String> unHandled(Exception ex) {
         Map<String, String> errorMap = new HashMap<>();
-        errorMap.put("badRequest", ex.getMessage());
+        errorMap.put("internal_server_error", ex.getMessage());
         return errorMap;
     }
 

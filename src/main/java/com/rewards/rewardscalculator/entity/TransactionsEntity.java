@@ -14,7 +14,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-@Table (name = "TRANSACTIONS")
+@Table(name = "TRANSACTIONS")
 @Data
 @RequiredArgsConstructor(staticName = "buildTransaction")
 @NoArgsConstructor
@@ -48,6 +48,6 @@ public class TransactionsEntity implements Serializable {
     private Integer customerId;
 
     @JsonProperty("reward_points")
-    private Integer points=0;
+    private Integer points = 0;
 
 }
