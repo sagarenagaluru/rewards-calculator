@@ -32,9 +32,9 @@ Enabled Swagger to provide more details about REST endpoints, access http://loca
 
 # Additional Information
 * Used h2 in memory database (JDBC URL : jdbc:h2:mem:testdb, User Name : sa)
-* Data base pre-loaded with one year transactions information
-* Three Customers ID’s  (1,2,3)are available to hit validate different information
-* Provided “/customers/saveTransaction” to add transaction details if any one wish to validate logic
+* Database pre-loaded with one year transactions information
+* Three Customers ID’s  (1,2,3)are available to validate with different information
+* Provided URI “/customers/saveTransaction” to add transaction details if any one wish to validate logic
 * As we have high level requirement on decimal values in transaction amount, we consider to round off (ceil/floor when > or < 0.5 ) to nearest number
 
 
