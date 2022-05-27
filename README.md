@@ -2,7 +2,6 @@
 
 A retailer offers a rewards program to its customers, awarding points based on each recorded purchase.
 
-Pre-requisites : Install Java version 8 or above and install Maven
 
 # Commands to run application
 **c:\<dir-path>:** mvn clean install
